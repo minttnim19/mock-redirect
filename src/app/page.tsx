@@ -1,7 +1,11 @@
 import { redirect } from 'next/navigation';
 
-export default function Home({ searchParams }: { searchParams: { callback?: string } }) {
-  const callback = searchParams.callback;
+interface HomeProps {
+  searchParams?: { callback?: string };
+}
+
+export default function Home({ searchParams }: HomeProps) {
+  const callback = searchParams?.callback;
 
   if (callback) {
     redirect(callback);
@@ -23,7 +27,7 @@ export default function Home({ searchParams }: { searchParams: { callback?: stri
         </div>
 
         <p className="text-sm text-gray-300 text-center">
-          Open the link above in your browser and you will be redirected to{' '}
+          Open the link above in your browser and you&apos;ll be redirected to{' '}
           <a
             href="https://example.com"
             className="underline text-blue-400 hover:text-blue-300 transition-colors"
