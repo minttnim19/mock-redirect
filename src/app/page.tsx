@@ -32,7 +32,7 @@ export default function Home(props: { searchParams: SearchParams }) {
         </p>
 
         <div className="bg-gray-800 text-green-400 font-mono text-sm p-4 rounded-lg mb-4 overflow-auto">
-          http://localhost:3000?callback=https://example.com
+          https://mock-redirect.vercel.app?callback=https://example.com
         </div>
 
         <p className="text-sm text-gray-300 text-center">
