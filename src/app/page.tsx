@@ -23,7 +23,7 @@ export default function Home({ searchParams }: { searchParams: { callback?: stri
         </div>
 
         <p className="text-sm text-gray-300 text-center">
-          Open the link above in your browser and you'll be redirected to{' '}
+          Open the link above in your browser and you will be redirected to{' '}
           <a
             href="https://example.com"
             className="underline text-blue-400 hover:text-blue-300 transition-colors"
