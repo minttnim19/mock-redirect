@@ -8,22 +8,12 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 export default function Home(props: { searchParams: SearchParams }) {
   const [callback, setCallback] = useState<string | undefined>(undefined);
 
-  // Validate URL format
-  const isValidHttpUrl = (url: string | undefined): url is string => {
-    if (!url) return false;
-    try {
-      const parsed = new URL(url);
-      return parsed.protocol === 'http:' || parsed.protocol === 'https:';
-    } catch {
-      return false;
-    }
-  };
-
   useEffect(() => {
     (async () => {
       const params = await props.searchParams;
-      const raw = typeof params?.callback === 'string' ? params.callback : '';
-      setCallback(isValidHttpUrl(raw) ? raw : undefined);
+      const cb =
+        typeof params?.callback === 'string' ? params.callback : undefined;
+      setCallback(cb);
     })();
   }, [props.searchParams]);
 
@@ -60,7 +50,7 @@ export default function Home(props: { searchParams: SearchParams }) {
           <>
             <h1 className="text-2xl font-bold">Ready to Redirect</h1>
             <p className="text-gray-300 text-sm">
-              We found a valid callback URL. Click below to continue.
+              We found a callback URL. Click below to continue.
             </p>
             <button
               onClick={handleRedirect}
